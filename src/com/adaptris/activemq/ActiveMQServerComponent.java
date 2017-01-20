@@ -16,6 +16,8 @@ public class ActiveMQServerComponent implements ManagementComponent {
 
   private static final String ACTIVEMQ_BROKER_CONFIG_FILE_NAME_KEY = "activemq.config.filename";
   
+  private static final String DEFAULT_ACTIVEMQ_CONFIG = "xbean:default-activemq.xml"; // found in the jar file.
+  
   private ClassLoader classLoader;
   
   private Properties properties;
@@ -49,11 +51,13 @@ public class ActiveMQServerComponent implements ManagementComponent {
           if(brokerConfig != null) {
             if(!brokerConfig.startsWith("xbean:"))
               brokerConfig = "xbean:" + brokerConfig;
-            
+          } else{ 
+            brokerConfig = DEFAULT_ACTIVEMQ_CONFIG;
+          }
             broker = BrokerFactory.createBroker(new URI(brokerConfig));
             broker.start();
-          } else
-            log.warn("No ActiveMQ config file configured, not starting ActiveMQ.");
+            
+            log.debug("ActiveMQ Broker now running.");
           
         } catch (Exception ex) {
           log.error("Could not start the ActiveMQ broker", ex);
