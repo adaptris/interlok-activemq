@@ -105,12 +105,12 @@
 
   <target name="compile_tests" depends="compile, jar">
     <mkdir dir="${testclasses.build.dir}"/>
-    <javac source="${javac.target.version}" target="${javac.target.version}" destdir="${testclasses.build.dir}" srcdir="${testsrc.dir}" debug="on" debuglevel="source,lines">
+    <!--javac source="${javac.target.version}" target="${javac.target.version}" destdir="${testclasses.build.dir}" srcdir="${testsrc.dir}" debug="on" debuglevel="source,lines">
       <classpath id="classpath.compiletests">
         <pathelement path="${classes.build.dir}"/>
         <path refid="main.classpath"/>
       </classpath>
-    </javac>
+    </javac-->
     <!-- Source our test property files, relying on ant property immutability.
       -->
     <property file="${test.resources.dir}/unit-tests.properties.template"/>
