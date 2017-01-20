@@ -42,11 +42,12 @@
 	<dependency org="org.apache.activemq" name="activemq-stomp" rev="5.10.0"/>
 	<dependency org="org.apache.activemq" name="activemq-mqtt" rev="5.10.0"/>
 	<dependency org="org.apache.activemq" name="activemq-http" rev="5.10.0"/>
+	<dependency org="org.apache.activemq" name="activemq-client" rev="5.10.0"/>
     
     <dependency org="org.springframework" name="spring-beans" rev="4.3.2.RELEASE" conf="compile->default"/>
     <dependency org="org.springframework" name="spring-context" rev="4.3.2.RELEASE" conf="compile->default"/>
 	
-	<dependency org="io.fabric8.insight" name="insight-log4j" rev="1.2.0.redhat-067"  conf="compile->default"/>
+	<!--dependency org="io.fabric8.insight" name="insight-log4j" rev="1.2.0.redhat-067"  conf="compile->default"/-->
 
     <dependency org="org.apache.velocity" name="velocity" rev="1.7" transitive="false" conf="compile->default"/>
     <dependency org="org.slf4j" name="slf4j-api" rev="1.7.12" conf="compile->default" />
