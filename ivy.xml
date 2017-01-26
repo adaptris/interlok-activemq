@@ -41,7 +41,6 @@
 	<dependency org="org.apache.activemq" name="activemq-amqp" rev="5.10.0"/>
 	<dependency org="org.apache.activemq" name="activemq-stomp" rev="5.10.0"/>
 	<dependency org="org.apache.activemq" name="activemq-mqtt" rev="5.10.0"/>
-	<dependency org="org.apache.activemq" name="activemq-http" rev="5.10.0"/>
 	<dependency org="org.apache.activemq" name="activemq-client" rev="5.10.0"/>
     
     <dependency org="org.springframework" name="spring-beans" rev="4.3.2.RELEASE" conf="compile->default"/>
