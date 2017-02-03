@@ -14,6 +14,7 @@ build.properties
 *.class
 .vscode
 .gradle
+activemq-data
 
 # Project artefacts from building.
 cobertura.ser

@@ -1,2 +1,1 @@
-
-
+junit.activemq.test.configuration=${test.resources.dir}/test-activemq.xml

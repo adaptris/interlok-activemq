@@ -14,15 +14,19 @@ public class ActiveMQServerComponent implements ManagementComponent {
   
   private transient Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-  private static final String ACTIVEMQ_BROKER_CONFIG_FILE_NAME_KEY = "activemq.config.filename";
+  /**
+   * The property key that defines the activemq configuration file.
+   * 
+   */
+  public static final String ACTIVEMQ_BROKER_CONFIG_FILE_NAME_KEY = "activemq.config.filename";
   
   private static final String DEFAULT_ACTIVEMQ_CONFIG = "xbean:default-activemq.xml"; // found in the jar file.
   
-  private ClassLoader classLoader;
+  private transient ClassLoader classLoader;
   
-  private Properties properties;
+  private transient Properties properties;
   
-  private BrokerService broker;
+  private transient BrokerService broker;
   
   @Override
   public void setClassLoader(ClassLoader classLoader) {
@@ -47,18 +51,15 @@ public class ActiveMQServerComponent implements ManagementComponent {
           log.debug("Creating ActiveMQ Broker");
           Thread.currentThread().setContextClassLoader(classLoader);
           
-          String brokerConfig = properties.getProperty(ACTIVEMQ_BROKER_CONFIG_FILE_NAME_KEY);
-          if(brokerConfig != null) {
-            if(!brokerConfig.startsWith("xbean:"))
-              brokerConfig = "xbean:" + brokerConfig;
-          } else{ 
-            brokerConfig = DEFAULT_ACTIVEMQ_CONFIG;
+          String brokerConfig = properties.getProperty(ACTIVEMQ_BROKER_CONFIG_FILE_NAME_KEY, DEFAULT_ACTIVEMQ_CONFIG);
+          if (!brokerConfig.startsWith("xbean:")) {
+            brokerConfig = "xbean:" + brokerConfig;
           }
-            broker = BrokerFactory.createBroker(new URI(brokerConfig));
-            broker.start();
-            
-            log.debug("ActiveMQ Broker now running.");
-          
+          broker = BrokerFactory.createBroker(new URI(brokerConfig));
+          broker.start();
+          log.debug("Starting {}", broker.getBrokerObjectName());
+          broker.waitUntilStarted();
+          log.debug("ActiveMQ Broker now running.");
         } catch (Exception ex) {
           log.error("Could not start the ActiveMQ broker", ex);
         }
@@ -69,11 +70,26 @@ public class ActiveMQServerComponent implements ManagementComponent {
 
   @Override
   public void stop() throws Exception {
-    this.broker.stop();
+    if (broker != null) {
+      broker.stop();
+      broker.waitUntilStopped();
+      broker = null;
+    }
   }
 
   @Override
   public void destroy() throws Exception {
   }
 
+  void waitForStart(long timeout) throws InterruptedException {
+    long totalWaitTime = 0;
+    while (!brokerStarted() && totalWaitTime < timeout) {
+      Thread.sleep(100);
+      totalWaitTime += timeout;
+    }
+  }
+
+  private boolean brokerStarted() {
+    return (broker != null) ? broker.isStarted() : false;
+  }
 }
