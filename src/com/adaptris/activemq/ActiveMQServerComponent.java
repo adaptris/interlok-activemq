@@ -10,6 +10,12 @@ import org.slf4j.LoggerFactory;
 
 import com.adaptris.core.management.ManagementComponent;
 
+/**
+ * Management component that starts up an embedded ActiveMQ broker.
+ * 
+ * @author amcgrath.
+ *
+ */
 public class ActiveMQServerComponent implements ManagementComponent {
   
   private transient Logger log = LoggerFactory.getLogger(this.getClass().getName());
