@@ -52,22 +52,6 @@ public class ActiveMQComponentTest {
   public void testDefaultStart() throws Exception {
     ActiveMQServerComponent comp = new ActiveMQServerComponent();
     comp.init(new Properties());
-    try {
-      comp.start();
-      comp.waitForStart(60000);
-      for (String p : DEFAULT_PROTOCOLS) {
-        assertTrue("Checking " + p, verify(p));
-      }
-    }
-    finally {
-      comp.stop();
-    }
-  }
-
-  @Test
-  public void testStartWithClassloader() throws Exception {
-    ActiveMQServerComponent comp = new ActiveMQServerComponent();
-    comp.init(new Properties());
     comp.setClassLoader(Thread.currentThread().getContextClassLoader());
     try {
       comp.start();
