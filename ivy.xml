@@ -28,16 +28,16 @@
     <dependency org="com.adaptris" name="adp-stubs" rev="${adp-core-version}" changing="true" conf="test->default"/>
     <dependency org="com.adaptris" name="adp-core-apt" rev="${adp-core-version}" conf="compile->default;ant->default" changing="true"/>
     <dependency org="org.apache.activemq" name="activemq-broker" rev="${activemq.version}" conf="compile->default" />
-    <dependency org="org.apache.activemq" name="activemq-jaas" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-kahadb-store" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-spring" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq.protobuf" name="activemq-protobuf" rev="1.1" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-amqp" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-stomp" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-mqtt" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.apache.activemq" name="activemq-client" rev="${activemq.version}" conf="compile->default"/>
-    <dependency org="org.springframework" name="spring-beans" rev="4.3.2.RELEASE" conf="compile->default"/>
-    <dependency org="org.springframework" name="spring-context" rev="4.3.2.RELEASE" conf="compile->default"/>
+    <dependency org="org.apache.activemq" name="activemq-jaas" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-kahadb-store" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-spring" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq.protobuf" name="activemq-protobuf" rev="1.1" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-amqp" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-stomp" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-mqtt" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.apache.activemq" name="activemq-client" rev="${activemq.version}" conf="runtime->default"/>
+    <dependency org="org.springframework" name="spring-beans" rev="4.3.2.RELEASE" conf="runtime->default"/>
+    <dependency org="org.springframework" name="spring-context" rev="4.3.2.RELEASE" conf="runtime->default"/>
     <!--dependency org="io.fabric8.insight" name="insight-log4j" rev="1.2.0.redhat-067" conf="compile->default"/-->
     <dependency org="org.apache.velocity" name="velocity" rev="1.7" transitive="false" conf="compile->default"/>
     <dependency org="org.slf4j" name="slf4j-api" rev="1.7.18" conf="compile->default" />
