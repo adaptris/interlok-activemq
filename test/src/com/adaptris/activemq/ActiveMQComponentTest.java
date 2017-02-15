@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.regex.Matcher;
 
 import javax.jms.Connection;
 import javax.jms.Session;
@@ -88,7 +89,7 @@ public class ActiveMQComponentTest {
 
   private static String relativize(String s) {
     if (!isEmpty(s)) {
-      return s.replaceAll(System.getProperty("user.dir"), ".").replaceAll("\\\\", "/");
+      return s.replaceAll(Matcher.quoteReplacement(System.getProperty("user.dir")), ".").replaceAll("\\\\", "/");
     }
     return s;
   }
