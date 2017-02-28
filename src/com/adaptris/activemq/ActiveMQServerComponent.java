@@ -81,10 +81,12 @@ public class ActiveMQServerComponent implements ManagementComponent {
       broker.waitUntilStopped();
       broker = null;
     }
+    log.debug(this.getClass().getSimpleName() + " Stopped");
   }
 
   @Override
   public void destroy() throws Exception {
+    log.debug(this.getClass().getSimpleName() + " Destroyed");
   }
 
   void waitForStart(long timeout) throws InterruptedException {
