@@ -33,6 +33,11 @@
     </tstamp>
     <property environment="env"/>
     <property name="env.COMPUTERNAME" value="${env.HOSTNAME}"/>
+    <condition property="junit.activemq.skip.tests" value="true">
+      <or>
+        <equals arg1="${env.COMPUTERNAME}" arg2="dev-vm02"/>
+      </or>
+    </condition>    
   </target>
 
   <target name="download-ivy" depends="init-ivy" unless="skip.ivy.download">
