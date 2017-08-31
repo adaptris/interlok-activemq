@@ -11,6 +11,7 @@ import javax.jms.Connection;
 import javax.jms.Session;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.commons.lang3.BooleanUtils;
 import org.junit.Test;
 
 import com.adaptris.core.BaseCase;
@@ -49,34 +50,42 @@ public class ActiveMQComponentTest {
     }
   }
 
+  static boolean skipTests() {
+    return BooleanUtils.toBoolean(TEST_PROPERTIES.getProperty("activemq.skip.tests", "false"));
+  }
+
   @Test
   public void testDefaultStart() throws Exception {
-    ActiveMQServerComponent comp = new ActiveMQServerComponent();
-    comp.init(new Properties());
-    comp.setClassLoader(Thread.currentThread().getContextClassLoader());
-    try {
-      comp.start();
-      comp.waitForStart(60000);
-      for (String p : DEFAULT_PROTOCOLS) {
-        assertTrue("Checking " + p, verify(p));
+    if (!skipTests()) {
+      ActiveMQServerComponent comp = new ActiveMQServerComponent();
+      comp.init(new Properties());
+      comp.setClassLoader(Thread.currentThread().getContextClassLoader());
+      try {
+        comp.start();
+        comp.waitForStart(60000);
+        for (String p : DEFAULT_PROTOCOLS) {
+          assertTrue("Checking " + p, verify(p));
+        }
       }
-    }
-    finally {
-      comp.stop();
+      finally {
+        comp.stop();
+      }
     }
   }
 
   @Test
   public void testStart_ConfiguredActiveMQ_XML() throws Exception {
-    ActiveMQServerComponent comp = new ActiveMQServerComponent();
-    comp.init(createBootProperties());
-    try {
-      comp.start();
-      comp.waitForStart(60000);
-      assertTrue("tcp://localhost:61617", verify("tcp://localhost:61617"));
-    }
-    finally {
-      comp.stop();
+    if (!skipTests()) {
+      ActiveMQServerComponent comp = new ActiveMQServerComponent();
+      comp.init(createBootProperties());
+      try {
+        comp.start();
+        comp.waitForStart(60000);
+        assertTrue("tcp://localhost:61617", verify("tcp://localhost:61617"));
+      }
+      finally {
+        comp.stop();
+      }
     }
   }
 
