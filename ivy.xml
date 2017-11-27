@@ -43,9 +43,9 @@
     <dependency org="org.springframework" name="spring-context" rev="4.3.2.RELEASE" conf="runtime->default"/>
     <!--dependency org="io.fabric8.insight" name="insight-log4j" rev="1.2.0.redhat-067" conf="compile->default"/-->
     <dependency org="org.apache.velocity" name="velocity" rev="1.7" transitive="false" conf="compile->default"/>
-    <dependency org="org.slf4j" name="slf4j-api" rev="1.7.18" conf="compile->default" />
-    <dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.18" conf="optional->default" />
-    <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.18" conf="optional->default"/>
+    <dependency org="org.slf4j" name="slf4j-api" rev="1.7.25" conf="compile->default" />
+    <dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.25" conf="optional->default" />
+    <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.25" conf="optional->default"/>
     <dependency org="log4j" name="log4j" rev="1.2.17" force="true" conf="test->default;ant->default"/>
     <dependency org="junit" name="junit" rev="4.11" conf="test->default"/>
     <dependency org="org.mockito" name="mockito-all" rev="1.9.5" conf="test->default"/>
