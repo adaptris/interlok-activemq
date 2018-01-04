@@ -2,6 +2,9 @@ package com.adaptris.activemq;
 
 import java.net.URI;
 import java.util.Properties;
+import java.util.concurrent.TimeoutException;
+
+import javax.management.MalformedObjectNameException;
 
 import org.apache.activemq.broker.BrokerFactory;
 import org.apache.activemq.broker.BrokerService;
@@ -89,12 +92,22 @@ public class ActiveMQServerComponent implements ManagementComponent {
     log.debug(this.getClass().getSimpleName() + " Destroyed");
   }
 
-  void waitForStart(long timeout) throws InterruptedException {
+  void waitForStart(long timeout) throws InterruptedException, TimeoutException {
     long totalWaitTime = 0;
     while (!brokerStarted() && totalWaitTime < timeout) {
       Thread.sleep(100);
-      totalWaitTime += timeout;
+      totalWaitTime += 100;
     }
+    if (totalWaitTime > timeout) {
+      throw new TimeoutException("Timeout Expired");
+    }
+  }
+
+  String brokerName() throws MalformedObjectNameException {
+    if (broker != null) {
+      return broker.getBrokerObjectName().toString();
+    }
+    return "n/a";
   }
 
   private boolean brokerStarted() {
