@@ -22,7 +22,7 @@
   <publications>
     <artifact name="interlok-activemq" type="jar" ext="jar"/>
     <artifact name="interlok-activemq" type="pom" ext="pom"/>
-    <artifact name="interlok-activemq-javadoc" type="javadoc" ext="zip" conf="javadoc"/>
+
     <artifact type="javadoc" ext="jar" conf="javadoc" m:classifier="javadoc"/>
   </publications>
   <dependencies>
