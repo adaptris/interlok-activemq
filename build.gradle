@@ -62,6 +62,9 @@ dependencies {
   compile  ("com.adaptris:interlok-common:$adpCoreVersion") { changing= true}
   compile  ("org.apache.activemq:activemq-broker:5.15.2")
 
+  runtimeOnly ("com.fasterxml.jackson.core:jackson-databind:2.8.11.1")
+  runtimeOnly ("com.fasterxml.jackson.core:jackson-core:2.8.11")
+  runtimeOnly ("com.google.guava:guava:24.1.1-jre")
   runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.2")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.2")
   runtimeOnly ("org.apache.activemq:activemq-spring:5.15.2")
