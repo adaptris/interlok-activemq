@@ -58,29 +58,30 @@ configurations.all {
 }
 
 dependencies {
-  compile ("com.adaptris:adp-core:$adpCoreVersion") { changing= true}
-  compile ("com.adaptris:interlok-common:$adpCoreVersion") { changing= true}
-  compile ("org.apache.activemq:activemq-broker:5.15.2")
+  compile  ("com.adaptris:adp-core:$adpCoreVersion") { changing= true}
+  compile  ("com.adaptris:interlok-common:$adpCoreVersion") { changing= true}
+  compile  ("org.apache.activemq:activemq-broker:5.15.2")
 
-  runtime ("org.apache.activemq:activemq-jaas:5.15.2")
-  runtime ("org.apache.activemq:activemq-kahadb-store:5.15.2")
-  runtime ("org.apache.activemq:activemq-spring:5.15.2")
-  runtime ("org.apache.activemq:activemq-amqp:5.15.2")
-  runtime ("org.apache.activemq:activemq-mqtt:5.15.2")
-  runtime ("org.apache.activemq:activemq-client:5.15.2")
-  runtime ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
-  runtime ("org.springframework:spring-beans:4.3.2.RELEASE")
-  runtime ("org.springframework:spring-context:4.3.2.RELEASE")
+  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-client:5.15.2")
+  runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
+  runtimeOnly ("org.springframework:spring-beans:4.3.2.RELEASE")
+  runtimeOnly ("org.springframework:spring-context:4.3.2.RELEASE")
 
   annotationProcessor ("com.adaptris:interlok-common:$adpCoreVersion") {changing= true}
 
-  testCompile ('junit:junit:4.12')
-  testCompile ("com.adaptris:adp-stubs:$adpCoreVersion") { changing= true}
-  testCompile ("org.apache.logging.log4j:log4j-core:2.8.1")
-  testCompile ("org.apache.logging.log4j:log4j-1.2-api:2.8.1")
-  testCompile ("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
-  testCompile ("org.apache.logging.log4j:log4j-api:2.8.1")
-  testCompile ("org.mockito:mockito-all:1.9.5")
+  testCompile  ('junit:junit:4.12')
+  testCompile  ("com.adaptris:adp-stubs:$adpCoreVersion") { changing= true}
+  testCompile  ("org.apache.logging.log4j:log4j-core:2.8.1")
+  testCompile  ("org.apache.logging.log4j:log4j-1.2-api:2.8.1")
+  testCompile  ("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
+  testCompile  ("org.apache.logging.log4j:log4j-api:2.8.1")
+  testCompile  ("org.mockito:mockito-all:1.9.5")
 
   javadoc("com.adaptris:adp-core-apt:$adpCoreVersion") { changing= true}
 
