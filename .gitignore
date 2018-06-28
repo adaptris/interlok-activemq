@@ -12,11 +12,6 @@ build.properties
 *.iml
 *.iws
 *.class
-.vscode
-.gradle
-activemq-data
-
-# Project artefacts from building.
 cobertura.ser
 jacoco.exec
 junit.log
@@ -29,3 +24,7 @@ log4j.properties
 *.orig
 target
 bin
+.gradle
+gradle.properties
+.vscode
+activemq-data
