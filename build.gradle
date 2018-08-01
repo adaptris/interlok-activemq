@@ -11,7 +11,6 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  slf4jVersion = '1.7.25'
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -66,13 +65,13 @@ dependencies {
   compile ("com.fasterxml.jackson.core:jackson-core:2.9.5")
   compile ("com.google.guava:guava:24.1.1-jre")
 
-  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-client:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-client:5.15.4")
   runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
   runtimeOnly ("org.springframework:spring-beans:4.3.2.RELEASE")
   runtimeOnly ("org.springframework:spring-context:4.3.2.RELEASE")
