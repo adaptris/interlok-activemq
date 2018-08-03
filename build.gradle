@@ -73,7 +73,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.4")
   runtimeOnly ("org.apache.activemq:activemq-client:5.15.4")
   runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
-  runtimeOnly ("org.springframework:spring-beans:4.3.18.RELEASE")
+  runtimeOnly ("org.springframework:spring-beans:5.0.8.RELEASE")
   runtimeOnly ("org.springframework:spring-context:4.3.18.RELEASE")
 
   annotationProcessor ("com.adaptris:interlok-common:$interlokCoreVersion") {changing= true}
