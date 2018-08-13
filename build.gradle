@@ -1,16 +1,16 @@
 ext {
-  adpCoreVersion = project.hasProperty('adpCoreVersion') ? project.getProperty('adpCoreVersion') : '3.7-SNAPSHOT'
-  releaseVersion = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '3.7-SNAPSHOT'
+  interlokCoreVersion = project.hasProperty('interlokCoreVersion') ? project.getProperty('interlokCoreVersion') : '3.8-SNAPSHOT'
+  releaseVersion = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '3.8-SNAPSHOT'
   mavenPublishUrl = project.hasProperty('mavenPublishUrl') ? project.getProperty('mavenPublishUrl') : 'https://development.adaptris.net/nexus/content/repositories/snapshots'
   repoUsername = project.hasProperty('repoUsername') ? project.getProperty('repoUsername') : 'unknown'
   repoPassword = project.hasProperty('repoPassword') ? project.getProperty('repoPassword') : 'unknown'
   defaultNexusRepo = project.hasProperty('defaultNexusRepo') ? project.getProperty('defaultNexusRepo') : 'https://repo1.maven.org/maven2/'
-  interlokJavadocs= project.hasProperty('interlokJavadocs') ? project.getProperty('interlokJavadocs') : 'https://development.adaptris.net/javadocs/latest/Interlok-API/'
-  interlokCommonJavadocs= project.hasProperty('interlokJavadocs') ? project.getProperty('interlokJavadocs') : 'https://development.adaptris.net/javadocs/latest/Interlok-Common/'
+  javadocsBaseUrl = "https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris"
+  interlokJavadocs= project.hasProperty('interlokJavadocs') ? project.getProperty('interlokJavadocs') : javadocsBaseUrl + "/interlok-core/" + interlokCoreVersion
+  interlokCommonJavadocs= project.hasProperty('interlokJavadocs') ? project.getProperty('interlokJavadocs') : javadocsBaseUrl + "/interlok-common/" + interlokCoreVersion
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  slf4jVersion = '1.7.25'
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -58,35 +58,35 @@ configurations.all {
 }
 
 dependencies {
-  compile  ("com.adaptris:adp-core:$adpCoreVersion") { changing= true}
-  compile  ("com.adaptris:interlok-common:$adpCoreVersion") { changing= true}
+  compile  ("com.adaptris:interlok-core:$interlokCoreVersion") { changing= true}
+  compile  ("com.adaptris:interlok-common:$interlokCoreVersion") { changing= true}
   compile  ("org.apache.activemq:activemq-broker:5.15.2")
-  compile ("com.fasterxml.jackson.core:jackson-databind:2.8.11.1")
-  compile ("com.fasterxml.jackson.core:jackson-core:2.8.11")
-  compile ("com.google.guava:guava:24.1.1-jre")
+  compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+  compile ("com.fasterxml.jackson.core:jackson-core:2.9.6")
+  compile ("com.google.guava:guava:26.0-jre")
 
-  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.2")
-  runtimeOnly ("org.apache.activemq:activemq-client:5.15.2")
+  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-client:5.15.4")
   runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
-  runtimeOnly ("org.springframework:spring-beans:4.3.2.RELEASE")
-  runtimeOnly ("org.springframework:spring-context:4.3.2.RELEASE")
+  runtimeOnly ("org.springframework:spring-beans:4.3.18.RELEASE")
+  runtimeOnly ("org.springframework:spring-context:4.3.18.RELEASE")
 
-  annotationProcessor ("com.adaptris:interlok-common:$adpCoreVersion") {changing= true}
+  annotationProcessor ("com.adaptris:interlok-common:$interlokCoreVersion") {changing= true}
 
   testCompile  ('junit:junit:4.12')
-  testCompile  ("com.adaptris:adp-stubs:$adpCoreVersion") { changing= true}
+  testCompile  ("com.adaptris:interlok-stubs:$interlokCoreVersion") { changing= true}
   testCompile  ("org.apache.logging.log4j:log4j-core:2.8.1")
   testCompile  ("org.apache.logging.log4j:log4j-1.2-api:2.8.1")
   testCompile  ("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
   testCompile  ("org.apache.logging.log4j:log4j-api:2.8.1")
-  testCompile  ("org.mockito:mockito-all:1.9.5")
+  testCompile  ("org.mockito:mockito-all:1.10.19")
 
-  javadoc("com.adaptris:adp-core-apt:$adpCoreVersion") { changing= true}
+  javadoc("com.adaptris:interlok-core-apt:$interlokCoreVersion") { changing= true}
 
 }
 
@@ -171,12 +171,14 @@ publishing {
       artifact javadocJar { classifier "javadoc" }
 
       pom.withXml {
+        asNode().appendNode("name", componentName)
         asNode().appendNode("description", "Embedded ActiveMQ management component")
         asNode().appendNode("url", "http://interlok.adaptris.net/interlok-docs/adapter-bootstrap.html#activemq-component")
         def properties = asNode().appendNode("properties")
         properties.appendNode("target", "3.6.0+")
         properties.appendNode("license", "false")
         properties.appendNode("tags", "activemq,management")
+        properties.appendNode("externalUrl", "http://kafka.apache.org/")
       }
     }
   }
