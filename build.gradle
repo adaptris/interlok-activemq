@@ -11,7 +11,7 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.15.5"
+  activeMqVersion="5.15.6"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
