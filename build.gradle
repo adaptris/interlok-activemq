@@ -74,7 +74,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
   runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
-  runtimeOnly ("org.springframework:spring-beans:4.3.18.RELEASE")
+  runtimeOnly ("org.springframework:spring-beans:4.3.19.RELEASE")
   runtimeOnly ("org.springframework:spring-context:4.3.18.RELEASE")
 
   annotationProcessor ("com.adaptris:interlok-core-apt:$interlokCoreVersion") {changing= true}
