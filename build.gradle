@@ -11,6 +11,10 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
+  activeMqVersion="5.15.6"
+  springVersion="4.3.19.RELEASE"
+  jacksonVersion="2.9.7"
+  log4j2Version="2.8.1"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -60,30 +64,30 @@ configurations.all {
 dependencies {
   compile  ("com.adaptris:interlok-core:$interlokCoreVersion") { changing= true}
   compile  ("com.adaptris:interlok-common:$interlokCoreVersion") { changing= true}
-  compile  ("org.apache.activemq:activemq-broker:5.15.2")
-  compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
-  compile ("com.fasterxml.jackson.core:jackson-core:2.9.6")
+  compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
+  compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+  compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
   compile ("com.google.guava:guava:26.0-jre")
 
-  runtimeOnly ("org.apache.activemq:activemq-jaas:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-spring:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-amqp:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-mqtt:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-stomp:5.15.4")
-  runtimeOnly ("org.apache.activemq:activemq-client:5.15.4")
+  runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-spring:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
+  runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
   runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
-  runtimeOnly ("org.springframework:spring-beans:4.3.18.RELEASE")
-  runtimeOnly ("org.springframework:spring-context:4.3.18.RELEASE")
+  runtimeOnly ("org.springframework:spring-beans:$springVersion")
+  runtimeOnly ("org.springframework:spring-context:$springVersion")
 
-  annotationProcessor ("com.adaptris:interlok-common:$interlokCoreVersion") {changing= true}
+  annotationProcessor ("com.adaptris:interlok-core-apt:$interlokCoreVersion") {changing= true}
 
   testCompile  ('junit:junit:4.12')
   testCompile  ("com.adaptris:interlok-stubs:$interlokCoreVersion") { changing= true}
-  testCompile  ("org.apache.logging.log4j:log4j-core:2.8.1")
-  testCompile  ("org.apache.logging.log4j:log4j-1.2-api:2.8.1")
-  testCompile  ("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
-  testCompile  ("org.apache.logging.log4j:log4j-api:2.8.1")
+  testCompile  ("org.apache.logging.log4j:log4j-core:$log4j2Version")
+  testCompile  ("org.apache.logging.log4j:log4j-1.2-api:$log4j2Version")
+  testCompile  ("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+  testCompile  ("org.apache.logging.log4j:log4j-api:$log4j2Version")
   testCompile  ("org.mockito:mockito-all:1.10.19")
 
   javadoc("com.adaptris:interlok-core-apt:$interlokCoreVersion") { changing= true}
