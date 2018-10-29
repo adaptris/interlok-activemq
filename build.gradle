@@ -11,7 +11,7 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.15.6"
+  activeMqVersion="5.15.7"
   springVersion="4.3.20.RELEASE"
   jacksonVersion="2.9.7"
   log4j2Version="2.8.1"
