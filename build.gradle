@@ -138,7 +138,7 @@ task generateVersion {
 
 task offlinePackageList(type: Copy) {
   description 'Build an offline package-list for javadocs'
-  group 'build'
+  group 'documentation'
 
   project.configurations.offlineJavadocPackages.collect { dependency ->
     from(zipTree(dependency)) {
