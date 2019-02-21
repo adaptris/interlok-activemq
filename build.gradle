@@ -15,8 +15,8 @@ ext {
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.15.8"
-  springVersion="4.3.20.RELEASE"
-  jacksonVersion="2.9.7"
+  springVersion="4.3.22.RELEASE"
+  jacksonVersion="2.9.8"
   log4j2Version="2.8.1"
 }
 
@@ -79,7 +79,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion") {
     exclude group: 'org.apache.qpid', module: 'proton-j'
   }
-  runtimeOnly ("org.apache.qpid:proton-j:0.30.0")
+  runtimeOnly ("org.apache.qpid:proton-j:0.31.0")
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
@@ -138,7 +138,7 @@ task generateVersion {
 
 task offlinePackageList(type: Copy) {
   description 'Build an offline package-list for javadocs'
-  group 'build'
+  group 'documentation'
 
   project.configurations.offlineJavadocPackages.collect { dependency ->
     from(zipTree(dependency)) {
