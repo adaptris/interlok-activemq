@@ -1,3 +1,11 @@
+plugins {
+  id 'java'
+  id 'maven'
+  id 'maven-publish'
+  id  "jacoco"
+  id 'com.github.spotbugs' version '1.6.10'
+}
+
 ext {
   interlokCoreVersion = project.hasProperty('interlokCoreVersion') ? project.getProperty('interlokCoreVersion') : '3.8-SNAPSHOT'
   releaseVersion = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '3.8-SNAPSHOT'
@@ -14,8 +22,8 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.15.8"
-  springVersion="4.3.22.RELEASE"
+  activeMqVersion="5.15.9"
+  springVersion="4.3.23.RELEASE"
   jacksonVersion="2.9.8"
   log4j2Version="2.8.1"
 }
@@ -27,11 +35,6 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
   }
 }
-
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 group   = 'com.adaptris'
@@ -71,7 +74,7 @@ dependencies {
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
   compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-  compile ("com.google.guava:guava:27.0.1-jre")
+  compile ("com.google.guava:guava:27.1-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
@@ -79,7 +82,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion") {
     exclude group: 'org.apache.qpid', module: 'proton-j'
   }
-  runtimeOnly ("org.apache.qpid:proton-j:0.31.0")
+  runtimeOnly ("org.apache.qpid:proton-j:0.32.0")
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
@@ -211,6 +214,26 @@ publishing {
       }
       url mavenPublishUrl
     }
+  }
+}
+
+spotbugs {
+  // showProgress = "true"
+  effort = "max"
+  // Ignore failures?
+  // ignoreFailures = false
+
+  // We only care about "high priority" issues...
+  reportLevel = "high"
+}
+
+// disable spotbugsTests which checks our test code..
+spotbugsTest.enabled = false
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  reports {
+    xml.enabled = false
+    html.enabled = true
   }
 }
 
