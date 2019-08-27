@@ -23,8 +23,9 @@ ext {
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.15.9"
-  springVersion="4.3.24.RELEASE"
+  springVersion="4.3.25.RELEASE"
   jacksonVersion="2.9.9"
+  jacksonDatabindVersion = "2.9.9.3"
   log4j2Version="2.8.1"
 }
 
@@ -72,7 +73,7 @@ dependencies {
   compile  ("com.adaptris:interlok-core:$interlokCoreVersion") { changing= true}
   compile  ("com.adaptris:interlok-common:$interlokCoreVersion") { changing= true}
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
-  compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+  compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
   compile ("com.google.guava:guava:28.0-jre")
 
