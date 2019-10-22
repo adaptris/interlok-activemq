@@ -22,10 +22,10 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.15.9"
+  activeMqVersion="5.15.10"
   springVersion="4.3.25.RELEASE"
-  jacksonVersion="2.9.9"
-  jacksonDatabindVersion = "2.9.9.3"
+  jacksonVersion="2.10.0"
+  jacksonDatabindVersion = "2.10.0"
   log4j2Version="2.8.1"
 }
 
@@ -75,7 +75,7 @@ dependencies {
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
   compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-  compile ("com.google.guava:guava:28.0-jre")
+  compile ("com.google.guava:guava:28.1-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
@@ -83,7 +83,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion") {
     exclude group: 'org.apache.qpid', module: 'proton-j'
   }
-  runtimeOnly ("org.apache.qpid:proton-j:0.33.1")
+  runtimeOnly ("org.apache.qpid:proton-j:0.33.2")
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
