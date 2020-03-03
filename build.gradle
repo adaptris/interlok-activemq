@@ -25,7 +25,7 @@ ext {
   activeMqVersion="5.15.11"
   springVersion="4.3.26.RELEASE"
   jacksonVersion="2.10.2"
-  jacksonDatabindVersion = "2.10.2"
+  jacksonDatabindVersion = "2.10.3"
   log4j2Version="2.8.1"
 }
 
