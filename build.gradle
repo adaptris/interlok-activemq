@@ -7,8 +7,8 @@ plugins {
 }
 
 ext {
-  interlokCoreVersion = project.hasProperty('interlokCoreVersion') ? project.getProperty('interlokCoreVersion') : '3.9-SNAPSHOT'
-  releaseVersion = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '3.9-SNAPSHOT'
+  interlokCoreVersion = project.hasProperty('interlokCoreVersion') ? project.getProperty('interlokCoreVersion') : '3.10-SNAPSHOT'
+  releaseVersion = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '3.10-SNAPSHOT'
   nexusBaseUrl = project.hasProperty('nexusBaseUrl') ? project.getProperty('nexusBaseUrl') : 'https://nexus.adaptris.net/nexus'
   mavenPublishUrl = project.hasProperty('mavenPublishUrl') ? project.getProperty('mavenPublishUrl') : nexusBaseUrl + '/content/repositories/snapshots'
   javadocsBaseUrl = nexusBaseUrl + "/content/sites/javadocs/com/adaptris"
@@ -23,9 +23,9 @@ ext {
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.15.11"
-  springVersion="4.3.25.RELEASE"
-  jacksonVersion="2.10.1"
-  jacksonDatabindVersion = "2.10.1"
+  springVersion="4.3.26.RELEASE"
+  jacksonVersion="2.10.2"
+  jacksonDatabindVersion = "2.10.2"
   log4j2Version="2.8.1"
 }
 
@@ -94,7 +94,7 @@ dependencies {
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
   compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-  compile ("com.google.guava:guava:28.1-jre")
+  compile ("com.google.guava:guava:28.2-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
@@ -112,7 +112,7 @@ dependencies {
 
   annotationProcessor ("com.adaptris:interlok-core-apt:$interlokCoreVersion") {changing= true}
 
-  testCompile  ('junit:junit:4.12')
+  testCompile  ('junit:junit:4.13')
   testCompile  ("com.adaptris:interlok-stubs:$interlokCoreVersion") { changing= true}
   testCompile  ("org.apache.logging.log4j:log4j-core:$log4j2Version")
   testCompile  ("org.apache.logging.log4j:log4j-1.2-api:$log4j2Version")
