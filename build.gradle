@@ -99,7 +99,7 @@ dependencies {
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
   compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-  compile ("com.google.guava:guava:28.2-jre")
+  compile ("com.google.guava:guava:29.0-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
