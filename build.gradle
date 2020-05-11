@@ -3,7 +3,7 @@ plugins {
   id 'maven'
   id 'maven-publish'
   id  "jacoco"
-  id 'com.github.spotbugs' version '3.0.0'
+  id 'com.github.spotbugs' version '4.0.5'
 }
 
 ext {
@@ -22,10 +22,10 @@ ext {
   componentName='Interlok/ActiveMQ Broker'
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.15.11"
+  activeMqVersion="5.15.12"
   springVersion="4.3.26.RELEASE"
-  jacksonVersion="2.10.2"
-  jacksonDatabindVersion = "2.10.2"
+  jacksonVersion="2.10.3"
+  jacksonDatabindVersion = "2.10.3"
   log4j2Version="2.8.1"
 }
 
@@ -82,6 +82,11 @@ configurations {
   all*.exclude group: 'net.sf.saxon', module: 'saxon'
   all*.exclude group: 'org.codehaus.woodstox'
   all*.exclude group: 'org.eclipse.jetty.orbit', module: 'javax.mail.glassfish'
+  // INTERLOK-3197 exclude old javax.mail
+  all*.exclude group: 'com.sun.mail', module: 'javax.mail'
+  all*.exclude group: 'javax.validation', module: 'validation-api'
+  all*.exclude group: 'javax.activation', module: 'activation'
+  all*.exclude group: 'javax.activation', module: 'javax.activation-api'
 }
 
 configurations.all {
@@ -94,7 +99,7 @@ dependencies {
   compile  ("org.apache.activemq:activemq-broker:$activeMqVersion")
   compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
   compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-  compile ("com.google.guava:guava:28.2-jre")
+  compile ("com.google.guava:guava:29.0-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
@@ -102,7 +107,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion") {
     exclude group: 'org.apache.qpid', module: 'proton-j'
   }
-  runtimeOnly ("org.apache.qpid:proton-j:0.33.3")
+  runtimeOnly ("org.apache.qpid:proton-j:0.33.4")
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
@@ -234,25 +239,22 @@ publishing {
   }
 }
 
-spotbugs {
-  // showProgress = "true"
+spotbugsMain {
   effort = "max"
-  // Ignore failures?
-  // ignoreFailures = false
-
-  // We only care about "high priority" issues...
   reportLevel = "high"
-}
-
-// disable spotbugsTests which checks our test code..
-spotbugsTest.enabled = false
-
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
   reports {
-    xml.enabled = false
-    html.enabled = true
+    xml {
+      enabled = false
+    }
+    html {
+      enabled = true
+    }
   }
 }
+
+  // disable spotbugsTests which checks our test code..
+spotbugsTest.enabled = false
+
 
 javadoc.dependsOn offlinePackageList
 check.dependsOn jacocoTestReport
