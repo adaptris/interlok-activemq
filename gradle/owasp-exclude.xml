@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes><![CDATA[
+   Hawtio console vulns; we aren't affected.
+   Jolokia CSRF
+   ]]>    </notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.activemq/activemq.*$</packageUrl>
+    <cve>CVE-2015-5183</cve>
+    <cve>CVE-2015-5184</cve>
+    <cve>CVE-2015-5182</cve>
+  </suppress>
+</suppressions>
