@@ -127,8 +127,8 @@ dependencies {
     exclude group: "org.apache.logging.log4j"
   }
 
-  testCompile ("org.mockito:mockito-core:3.6.0")
-  testCompile ("org.mockito:mockito-inline:3.6.0")
+  testCompile ("org.mockito:mockito-core:3.6.28")
+  testCompile ("org.mockito:mockito-inline:3.6.28")
 
   javadoc("com.adaptris:interlok-core-apt:$interlokCoreVersion") { changing= true}
 
@@ -227,7 +227,7 @@ publishing {
         asNode().appendNode("description", "Embedded ActiveMQ management component")
         asNode().appendNode("url", "http://interlok.adaptris.net/interlok-docs/adapter-bootstrap.html#activemq-component")
         def properties = asNode().appendNode("properties")
-        properties.appendNode("target", "3.6.0+")
+        properties.appendNode("target", "3.6.28+")
         properties.appendNode("license", "false")
         properties.appendNode("tags", "activemq,management")
         properties.appendNode("externalUrl", "http://activemq.apache.org/")
