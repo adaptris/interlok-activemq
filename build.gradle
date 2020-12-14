@@ -232,6 +232,7 @@ publishing {
         properties.appendNode("license", "false")
         properties.appendNode("tags", "activemq,management")
         properties.appendNode("externalUrl", "http://activemq.apache.org/")
+        properties.appendNode("repository", "https://github.com/adaptris/interlok-activemq")
       }
     }
   }
