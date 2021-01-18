@@ -226,7 +226,7 @@ publishing {
       pom.withXml {
         asNode().appendNode("name", componentName)
         asNode().appendNode("description", "Embedded ActiveMQ management component")
-        asNode().appendNode("url", "http://interlok.adaptris.net/interlok-docs/adapter-bootstrap.html#activemq-component")
+        asNode().appendNode("url", "https://interlok.adaptris.net/interlok-docs/#/pages/user-guide/adapter-bootstrap?id=activemq-component")
         def properties = asNode().appendNode("properties")
         properties.appendNode("target", "3.6.0+")
         properties.appendNode("license", "false")
