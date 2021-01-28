@@ -28,6 +28,7 @@ ext {
   jacksonVersion="2.12.1"
   jacksonDatabindVersion = "2.12.1"
   slf4jVersion="1.7.30"
+  mockitoVersion="3.7.0"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
@@ -128,8 +129,8 @@ dependencies {
     exclude group: "org.apache.logging.log4j"
   }
 
-  testCompile ("org.mockito:mockito-core:3.7.0")
-  testCompile ("org.mockito:mockito-inline:3.7.0")
+  testCompile ("org.mockito:mockito-core:$mockitoVersion")
+  testCompile ("org.mockito:mockito-inline:$mockitoVersion")
 
   javadoc("com.adaptris:interlok-core-apt:$interlokCoreVersion") { changing= true}
 
