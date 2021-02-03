@@ -14,7 +14,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.lang3.BooleanUtils;
 import org.junit.Test;
 
-import com.adaptris.core.BaseCase;
+import com.adaptris.interlok.junit.scaffolding.BaseCase;
 
 public class ActiveMQComponentTest {
 
@@ -29,9 +29,9 @@ public class ActiveMQComponentTest {
   private static final String MQTT = "tcp://127.0.0.1:1883";
 
   private static final String[] DEFAULT_PROTOCOLS =
-  {
-      OPENWIRE, AMQP, STOMP, MQTT
-  };
+    {
+        OPENWIRE, AMQP, STOMP, MQTT
+    };
 
   static {
     TEST_PROPERTIES = new Properties();
