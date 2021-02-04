@@ -24,7 +24,7 @@ ext {
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.16.1"
-  springVersion="4.3.30.RELEASE"
+  springVersion="5.3.3"
   jacksonVersion="2.12.1"
   jacksonDatabindVersion = "2.12.1"
   slf4jVersion="1.7.30"
@@ -157,6 +157,7 @@ sourceSets {
     output.dir(versionDir, builtBy: 'generateVersion')
   }
 }
+
 // Generate the META-INF/adaptris-version file
 task generateVersion {
   doLast {
@@ -164,9 +165,9 @@ task generateVersion {
     versionFile.getParentFile().mkdirs()
     ant.propertyfile(file: versionFile) {
       entry(key: 'component.name', value: componentName)
-      entry(key: 'build.version', value: releaseVersion)
       entry(key: 'groupId', value: "com.adaptris")
       entry(key: 'artifactId', value: project.name)
+      entry(key: 'build.version', value: releaseVersion)
       entry(key: 'build.date', value: new Date().format('yyyy-MM-dd'))
       entry(key: 'build.info', value: buildInfo())
     }
@@ -194,7 +195,7 @@ javadoc {
     options.linksOffline(interlokCommonJavadocs, offlineJavadocPackageDir.getCanonicalPath() + "/interlok-common-$interlokCoreVersion-javadoc.jar")
     taglets = ["com.adaptris.taglet.ConfigTaglet", "com.adaptris.taglet.LicenseTaglet"]
     options.addStringOption "tagletpath", configurations.javadoc.asPath
-	options.addBooleanOption "-no-module-directories", true
+    options.addBooleanOption "-no-module-directories", true
     title= componentName
   }
 }
@@ -262,6 +263,7 @@ spotbugsMain {
     }
   }
 }
+
 dependencyCheck  {
   suppressionFiles= [ "https://raw.githubusercontent.com/adaptris/interlok/develop/gradle/owasp-exclude.xml", "$rootDir/gradle/owasp-exclude.xml" ]
   skipConfigurations = [ "antSql", "spotbugs", "umlDoclet", "offlineJavadocPackages", "javadoc", "jacocoAnt", "jacocoAgent", "spotbugsPlugins", "spotbugsSlf4j" ]
