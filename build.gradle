@@ -31,7 +31,7 @@ ext {
   jacksonVersion="2.12.2"
   jacksonDatabindVersion = "2.12.2"
   slf4jVersion="1.7.30"
-  mockitoVersion="3.8.0"
+  mockitoVersion="3.9.0"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
