@@ -4,4 +4,4 @@
 
 The suggested name was `bookish-barnacle`
 
-[http://interlok.adaptris.net/interlok-docs/adapter-bootstrap.html#activemq-component](http://interlok.adaptris.net/interlok-docs/adapter-bootstrap.html#activemq-component)
+[https://interlok.adaptris.net/interlok-docs/#/pages/user-guide/adapter-bootstrap?id=activemq-component](https://interlok.adaptris.net/interlok-docs/#/pages/user-guide/adapter-bootstrap?id=activemq-component)
