@@ -126,7 +126,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-amqp:$activeMqVersion") {
     exclude group: 'org.apache.qpid', module: 'proton-j'
   }
-  runtimeOnly ("org.apache.qpid:proton-j:0.33.8")
+  runtimeOnly ("org.apache.qpid:proton-j:0.33.9")
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
