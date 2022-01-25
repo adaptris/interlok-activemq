@@ -29,7 +29,7 @@ ext {
   jacksonVersion="2.13.1"
   jacksonDatabindVersion = "2.13.1"
   slf4jVersion="1.7.33"
-  mockitoVersion='4.2.0'
+  mockitoVersion='4.3.0'
 }
 
 ext.gitBranchNameOrTimestamp = { branchName ->
