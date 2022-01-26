@@ -28,7 +28,7 @@ ext {
   springVersion="5.3.15"
   jacksonVersion="2.13.1"
   jacksonDatabindVersion = "2.13.1"
-  slf4jVersion="1.7.33"
+  slf4jVersion="1.7.35"
   mockitoVersion='4.3.0'
 }
 
