@@ -26,7 +26,7 @@ ext {
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.16.4"
   springVersion="5.3.16"
-  jacksonVersion="2.13.1"
+  jacksonVersion="2.13.2"
   jacksonDatabindVersion = "2.13.2"
   slf4jVersion="1.7.36"
   mockitoVersion='4.3.1'
