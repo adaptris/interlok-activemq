@@ -24,7 +24,7 @@ ext {
 
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.16.4"
+  activeMqVersion="5.17.0"
   springVersion="5.3.16"
   jacksonVersion="2.13.2"
   jacksonDatabindVersion = "2.13.2"
