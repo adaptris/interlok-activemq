@@ -26,8 +26,7 @@ ext {
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.17.0"
   springVersion="5.3.17"
-  jacksonVersion="2.13.2"
-  jacksonDatabindVersion = "2.13.2.1"
+  jacksonVersion="2.13.2.20220324"
   slf4jVersion="1.7.36"
   mockitoVersion='4.4.0'
 }
@@ -116,8 +115,10 @@ dependencies {
   api  ("com.adaptris:interlok-core:$interlokCoreVersion") { changing= true}
   api  ("com.adaptris:interlok-common:$interlokCoreVersion") { changing= true}
   implementation  ("org.apache.activemq:activemq-broker:$activeMqVersion")
-  implementation ("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
-  implementation ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+  // Dependency to platform/BOM
+  implementation(platform("com.fasterxml.jackson:jackson-bom:$jacksonVersion"))
+  implementation ("com.fasterxml.jackson.core:jackson-databind:")
+  implementation ("com.fasterxml.jackson.core:jackson-core:")
   implementation ("com.google.guava:guava:31.1-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
