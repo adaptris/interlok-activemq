@@ -18,4 +18,12 @@
      <packageUrl regex="true">^pkg:maven/org\.springframework/spring.*$</packageUrl>
      <cve>CVE-2016-1000027</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+    file name: activemq-broker-5.17.1.jar
+	False positive
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.activemq/activemq\-broker@.*$</packageUrl>
+    <vulnerabilityName>CVE-2015-3208</vulnerabilityName>
+  </suppress>
 </suppressions>
