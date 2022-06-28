@@ -10,4 +10,20 @@
     <cve>CVE-2015-5184</cve>
     <cve>CVE-2015-5182</cve>
   </suppress>
+  <suppress>
+     <notes><![CDATA[
+	 This project is not affected as it't not using the vulnerable classes. https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-744519525.
+     files: spring-aop-5.3.20.jar, spring-beans-5.3.20.jar, spring-context-5.3.20.jar, spring-core-5.3.20.jar, spring-expression-5.3.20.jar, spring-jcl-5.3.20.jar
+     ]]></notes>
+     <packageUrl regex="true">^pkg:maven/org\.springframework/spring.*$</packageUrl>
+     <cve>CVE-2016-1000027</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+    file name: activemq-broker-5.17.1.jar
+	False positive
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.activemq/activemq\-broker@.*$</packageUrl>
+    <vulnerabilityName>CVE-2015-3208</vulnerabilityName>
+  </suppress>
 </suppressions>
