@@ -28,7 +28,7 @@ ext {
   springVersion="5.3.22"
   jacksonVersion="2.13.3"
   slf4jVersion="1.7.36"
-  mockitoVersion='4.6.1'
+  mockitoVersion='4.7.0'
 }
 
 ext.gitBranchNameOrTimestamp = { branchName ->
