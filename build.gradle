@@ -27,7 +27,7 @@ ext {
   activeMqVersion="5.17.2"
   springVersion="5.3.22"
   jacksonVersion="2.13.4"
-  slf4jVersion="1.7.36"
+  slf4jVersion="2.0.0"
   mockitoVersion='4.8.0'
 }
 
