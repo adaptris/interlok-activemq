@@ -1,18 +1,15 @@
 package com.adaptris.activemq;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 
-import javax.jms.Connection;
-import javax.jms.Session;
-
-import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.lang3.BooleanUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.adaptris.interlok.junit.scaffolding.BaseCase;
 
@@ -20,9 +17,9 @@ public class ActiveMQComponentTest {
 
   private static final Properties TEST_PROPERTIES;
   private static final String PROPERTIES_RESOURCE = "unit-tests.properties";
-  private static final String DEFAULT_NAME = "defaultMgmtComponentBroker";
   private static final String TEST_ACTIVEMQ_CONFIG = "activemq.test.configuration";
 
+/*
   private static final String OPENWIRE = "tcp://127.0.0.1:61616";
   private static final String AMQP = "tcp://127.0.0.1:5672";
   private static final String STOMP = "tcp://127.0.0.1:61613";
@@ -32,6 +29,7 @@ public class ActiveMQComponentTest {
     {
         OPENWIRE, AMQP, STOMP, MQTT
     };
+*/
 
   static {
     TEST_PROPERTIES = new Properties();
@@ -44,8 +42,7 @@ public class ActiveMQComponentTest {
 
     try {
       TEST_PROPERTIES.load(in);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
@@ -56,44 +53,38 @@ public class ActiveMQComponentTest {
 
   @Test
   public void testDefaultStart() throws Exception {
-    if (!skipTests()) {
-      ActiveMQServerComponent comp = new ActiveMQServerComponent();
-      comp.init(new Properties());
-      comp.setClassLoader(Thread.currentThread().getContextClassLoader());
-      try {
-        comp.start();
-        comp.waitForStart(60000);
-        System.err.println(comp.brokerName() + " started");
-        // for (String p : DEFAULT_PROTOCOLS) {
-        // assertTrue("Checking " + p, verify(p));
-        // }
-      }
-      catch (InterruptedException | TimeoutException e) {
-        System.err.println("Failed to start");
-      }
-      finally {
-        comp.stop();
-      }
+    assumeFalse(skipTests());
+    ActiveMQServerComponent comp = new ActiveMQServerComponent();
+    comp.init(new Properties());
+    comp.setClassLoader(Thread.currentThread().getContextClassLoader());
+    try {
+      comp.start();
+      comp.waitForStart(60000);
+      System.err.println(comp.brokerName() + " started");
+      // for (String p : DEFAULT_PROTOCOLS) {
+      // assertTrue("Checking " + p, verify(p));
+      // }
+    } catch (InterruptedException | TimeoutException e) {
+      System.err.println("Failed to start");
+    } finally {
+      comp.stop();
     }
   }
 
   @Test
   public void testStart_ConfiguredActiveMQ_XML() throws Exception {
-    if (!skipTests()) {
-      ActiveMQServerComponent comp = new ActiveMQServerComponent();
-      comp.init(createBootProperties());
-      try {
-        comp.start();
-        comp.waitForStart(60000);
-        System.err.println(comp.brokerName() + " started");
-        // assertTrue("tcp://localhost:61617", verify("tcp://localhost:61617"));
-      }
-      catch (InterruptedException | TimeoutException e) {
-        System.err.println("Failed to start");
-      }
-      finally {
-        comp.stop();
-      }
+    assumeFalse(skipTests());
+    ActiveMQServerComponent comp = new ActiveMQServerComponent();
+    comp.init(createBootProperties());
+    try {
+      comp.start();
+      comp.waitForStart(60000);
+      System.err.println(comp.brokerName() + " started");
+      // assertTrue(verify("tcp://localhost:61617"), "tcp://localhost:61617");
+    } catch (InterruptedException | TimeoutException e) {
+      System.err.println("Failed to start");
+    } finally {
+      comp.stop();
     }
   }
 
@@ -109,48 +100,6 @@ public class ActiveMQComponentTest {
       return s.replaceAll(Matcher.quoteReplacement(System.getProperty("user.dir")), ".").replaceAll("\\\\", "/");
     }
     return s;
-  }
-
-  private boolean verify(String url) {
-    boolean ok = false;
-    ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
-    Connection connection = null;
-    Session session = null;
-    try {
-      connection = connectionFactory.createConnection();
-      connection.start();
-      session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-      ok = true;
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-    finally {
-      close(session, connection);
-    }
-    return ok;
-  }
-
-  private void close(Session s, Connection c) {
-    if (s != null) {
-      try {
-        c.close();
-      }
-      catch (Exception e) {
-      }
-    }
-    if (c != null) {
-      try {
-        c.stop();
-      }
-      catch (Exception e) {
-      }
-      try {
-        c.close();
-      }
-      catch (Exception e) {
-      }
-    }
   }
 
 }
