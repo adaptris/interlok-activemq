@@ -84,7 +84,6 @@ repositories {
   maven { url "$nexusBaseUrl/content/groups/interlok" }
 }
 
-
 configurations {
   javadoc {}
   offlineJavadocPackages {}
@@ -151,7 +150,6 @@ dependencies {
 
 }
 
-
 jar {
   manifest {
     attributes("Built-By": System.getProperty('user.name'),
@@ -162,7 +160,6 @@ jar {
                "Implementation-Vendor": organizationName)
   }
 }
-
 
 sourceSets {
   main {
@@ -290,9 +287,12 @@ dependencyCheck  {
   }
 }
 
-  // disable spotbugsTests which checks our test code..
+test {
+  useJUnitPlatform()
+}
+  
+// disable spotbugsTests which checks our test code..
 spotbugsTest.enabled = false
-
 
 javadoc.dependsOn offlinePackageList
 check.dependsOn jacocoTestReport
