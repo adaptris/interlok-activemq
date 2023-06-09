@@ -26,9 +26,9 @@ ext {
   organizationUrl = "http://interlok.adaptris.net"
   activeMqVersion="5.18.1"
   springVersion="5.3.27"
-  jacksonVersion="2.15.1"
+  jacksonVersion="2.15.2"
   slf4jVersion="2.0.7"
-  mockitoVersion='4.8.0'
+  mockitoVersion='5.2.0'
 }
 
 ext.gitBranchNameOrTimestamp = { branchName ->
@@ -119,7 +119,7 @@ dependencies {
   implementation(platform("com.fasterxml.jackson:jackson-bom:$jacksonVersion"))
   implementation ("com.fasterxml.jackson.core:jackson-databind")
   implementation ("com.fasterxml.jackson.core:jackson-core")
-  implementation ("com.google.guava:guava:31.1-jre")
+  implementation ("com.google.guava:guava:32.0.0-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
