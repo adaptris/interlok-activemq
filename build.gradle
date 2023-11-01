@@ -1,9 +1,10 @@
 plugins {
-  id 'java-library'
-  id 'maven-publish'
-  id 'jacoco'
-  id 'com.github.spotbugs' version '5.2.1'
-  id 'org.owasp.dependencycheck' version '8.4.2'
+  id "java-library"
+  id "maven-publish"
+  id "jacoco"
+  id "com.github.spotbugs" version "5.2.1"
+  id "org.sonarqube" version "4.4.1.3373"
+  id "org.owasp.dependencycheck" version "8.4.2"
 }
 
 ext {
@@ -48,6 +49,14 @@ ext.buildInfo = { ->
       def branchName = os.toString().replaceAll("\r", "").replaceAll("\n", "").trim();
       return gitBranchNameOrTimestamp(branchName);
     }
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "adaptris_interlok-activemq"
+    property "sonar.organization", "adaptris-org"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 // Disable gradle module generation since we probably don't want
