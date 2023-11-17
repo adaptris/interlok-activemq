@@ -1,6 +1,12 @@
 # interlok-activemq
 
-[![GitHub tag](https://img.shields.io/github/tag/adaptris/interlok-activemq.svg)](https://github.com/adaptris/interlok-activemq/tags) ![license](https://img.shields.io/github/license/adaptris/interlok-activemq.svg) [![codecov](https://codecov.io/gh/adaptris/interlok-activemq/branch/develop/graph/badge.svg)](https://codecov.io/gh/adaptris/interlok-activemq) [![Total alerts](https://img.shields.io/lgtm/alerts/g/adaptris/interlok-activemq.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adaptris/interlok-activemq/alerts/) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/adaptris/interlok-activemq.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adaptris/interlok-activemq/context:java)
+[![GitHub tag](https://img.shields.io/github/tag/adaptris/interlok-activemq.svg)](https://github.com/adaptris/interlok-activemq/tags)
+[![license](https://img.shields.io/github/license/adaptris/interlok-activemq.svg)](https://github.com/adaptris/interlok-activemq/blob/develop/LICENSE)
+[![Actions Status](https://github.com/adaptris/interlok-activemq/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/adaptris/interlok-activemq/actions)
+[![codecov](https://codecov.io/gh/adaptris/interlok-activemq/branch/develop/graph/badge.svg)](https://codecov.io/gh/adaptris/interlok-activemq)
+[![CodeQL](https://github.com/adaptris/interlok-activemq/workflows/CodeQL/badge.svg)](https://github.com/adaptris/interlok-activemq/security/code-scanning)
+[![Known Vulnerabilities](https://snyk.io/test/github/adaptris/interlok-activemq/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/adaptris/interlok-activemq?targetFile=build.gradle)
+[![Closed PRs](https://img.shields.io/github/issues-pr-closed/adaptris/interlok-activemq)](https://github.com/adaptris/interlok-activemq/pulls?q=is%3Apr+is%3Aclosed)
 
 The suggested name was `bookish-barnacle`
 
