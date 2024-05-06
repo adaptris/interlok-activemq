@@ -127,7 +127,7 @@ dependencies {
   implementation(platform("com.fasterxml.jackson:jackson-bom:$jacksonVersion"))
   implementation ("com.fasterxml.jackson.core:jackson-databind")
   implementation ("com.fasterxml.jackson.core:jackson-core")
-  implementation ("com.google.guava:guava:33.1.0-jre")
+  implementation ("com.google.guava:guava:33.2.0-jre")
 
   runtimeOnly ("org.apache.activemq:activemq-jaas:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-kahadb-store:$activeMqVersion")
