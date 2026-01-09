@@ -26,4 +26,13 @@
     <packageUrl regex="true">^pkg:maven/org\.apache\.activemq/activemq\-broker@.*$</packageUrl>
     <vulnerabilityName>CVE-2015-3208</vulnerabilityName>
   </suppress>
+  <suppress>
+    <notes>
+      <![CDATA[
+    5.3.39 is the latest version. To remediate this, a major version update would be needed, ie, Spring 6.x.x
+    ]]>
+    </notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring.*$</packageUrl>
+    <vulnerabilityName>CVE-2024-38820</vulnerabilityName>
+  </suppress>
 </suppressions>
