@@ -25,7 +25,7 @@ ext {
 
   organizationName = "Adaptris Ltd"
   organizationUrl = "http://interlok.adaptris.net"
-  activeMqVersion="5.18.7"
+  activeMqVersion="5.19.6"
   springVersion="5.3.39"
   jacksonVersion="2.21.3"
   slf4jVersion="2.0.17"
@@ -298,6 +298,11 @@ dependencyCheck  {
   }
   analyzers {
     assemblyEnabled=false
+	ossIndex {
+	  username = System.getenv("OSS_INDEX_USERNAME")
+	  password = System.getenv("OSS_INDEX_PASSWORD")
+  	  warnOnlyOnRemoteErrors = true
+    }
   }
 }
 
