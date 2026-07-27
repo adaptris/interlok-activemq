@@ -131,7 +131,7 @@ dependencies {
   runtimeOnly ("org.apache.activemq:activemq-mqtt:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-stomp:$activeMqVersion")
   runtimeOnly ("org.apache.activemq:activemq-client:$activeMqVersion")
-  runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:1.1")
+  runtimeOnly ("org.apache.activemq.protobuf:activemq-protobuf:6.3.0")
   runtimeOnly ("org.springframework:spring-beans:$springVersion")
   runtimeOnly ("org.springframework:spring-context:$springVersion")
 
