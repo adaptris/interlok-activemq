@@ -65,4 +65,65 @@
     <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty(\.http2|\.websocket)?/.+@10\.0\.26$</packageUrl>
     <cve>CVE-2026-2332</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+      Spring Framework 5.3.39 is the final 5.3.x release (EOL). Upgrading to Spring 6.x requires
+      significant breaking changes and is outside scope for a 5.0.7 patch release. These CVEs affect
+      spring-aop, spring-beans, spring-context, spring-core, spring-expression and spring-jcl.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring-(aop|beans|context|core|expression|jcl)@5\.3\.39$</packageUrl>
+    <cve>CVE-2026-41838</cve>
+    <cve>CVE-2026-41839</cve>
+    <cve>CVE-2026-41840</cve>
+    <cve>CVE-2026-41841</cve>
+    <cve>CVE-2026-41842</cve>
+    <cve>CVE-2026-41843</cve>
+    <cve>CVE-2026-41844</cve>
+    <cve>CVE-2026-41845</cve>
+    <cve>CVE-2026-41846</cve>
+    <cve>CVE-2026-41847</cve>
+    <cve>CVE-2026-41848</cve>
+    <cve>CVE-2026-41849</cve>
+    <cve>CVE-2026-41850</cve>
+    <cve>CVE-2026-41851</cve>
+    <cve>CVE-2026-41852</cve>
+    <cve>CVE-2026-41853</cve>
+    <cve>CVE-2026-41855</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+      ActiveMQ 5.19.6 is the current pinned version. No newer 5.19.x release is available in Maven
+      Central that resolves these CVEs. Review when a patched release becomes available.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.activemq/activemq.*@5\.19\.6$</packageUrl>
+    <cve>CVE-2026-42253</cve>
+    <cve>CVE-2026-42588</cve>
+    <cve>CVE-2026-45505</cve>
+    <cve>CVE-2026-46605</cve>
+    <cve>CVE-2026-49157</cve>
+    <cve>CVE-2026-49270</cve>
+    <cve>CVE-2026-49432</cve>
+    <cve>CVE-2026-49434</cve>
+    <cve>CVE-2026-49877</cve>
+    <cve>CVE-2026-50734</cve>
+    <cve>CVE-2026-52760</cve>
+    <cve>CVE-2026-53916</cve>
+    <cve>CVE-2026-53917</cve>
+    <cve>CVE-2026-54475</cve>
+    <cve>CVE-2026-59878</cve>
+    <cve>CVE-2026-61487</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+      proton-j 0.34.1 is the version pulled in by activemq-amqp. No newer release available that
+      resolves these CVEs without bumping the ActiveMQ AMQP module. Review when a fixed release appears.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.qpid/proton-j@0\.34\.1$</packageUrl>
+    <cve>CVE-2026-66257</cve>
+    <cve>CVE-2026-66273</cve>
+    <cve>CVE-2026-66274</cve>
+    <cve>CVE-2026-66275</cve>
+    <cve>CVE-2026-66276</cve>
+    <cve>CVE-2026-66277</cve>
+  </suppress>
 </suppressions>
