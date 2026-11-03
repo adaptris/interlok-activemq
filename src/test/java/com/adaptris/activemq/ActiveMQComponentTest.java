@@ -1,13 +1,18 @@
 package com.adaptris.activemq;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.io.InputStream;
+import java.net.Socket;
+import java.net.URI;
 import java.util.Properties;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 
+import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.broker.TransportConnector;
 import org.apache.commons.lang3.BooleanUtils;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +54,29 @@ public class ActiveMQComponentTest {
 
   static boolean skipTests() {
     return BooleanUtils.toBoolean(TEST_PROPERTIES.getProperty("activemq.skip.tests", "false"));
+  }
+
+  @Test
+  public void testAmqpProtocolHandshake() throws Exception {
+    BrokerService broker = new BrokerService();
+    broker.setPersistent(false);
+    broker.setUseJmx(false);
+    TransportConnector connector = broker.addConnector("amqp://127.0.0.1:0");
+    try {
+      broker.start();
+      broker.waitUntilStarted();
+      URI address = connector.getPublishableConnectURI();
+      try (Socket socket = new Socket(address.getHost(), address.getPort())) {
+        socket.setSoTimeout(10000);
+        byte[] header = {'A', 'M', 'Q', 'P', 3, 1, 0, 0};
+        socket.getOutputStream().write(header);
+        socket.getOutputStream().flush();
+        assertArrayEquals(header, socket.getInputStream().readNBytes(header.length));
+      }
+    } finally {
+      broker.stop();
+      broker.waitUntilStopped();
+    }
   }
 
   @Test
