@@ -239,7 +239,7 @@ task cleanActiveMQ(type: Delete) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
+  archiveClassifier = 'javadoc'
   from javadoc.destinationDir
 }
 
@@ -252,7 +252,7 @@ publishing {
     mavenJava(MavenPublication) {
       from components.java
 
-      artifact javadocJar { classifier "javadoc" }
+      artifact javadocJar
 
       pom.withXml {
         asNode().appendNode("name", componentName)
